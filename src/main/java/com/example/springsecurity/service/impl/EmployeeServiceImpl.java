@@ -10,14 +10,21 @@ import java.util.List;
 @Service
 public class EmployeeServiceImpl implements EmployeeService{
 
-    @Value(${spring.datasource.url})
+    @Value("${spring.datasource.driver}")
     String driver;
+    @Value("${spring.datasource.url}")
+    String url;
+    @Value("${spring.datasource.username}")
+    String username;
+    @Value("${spring.datasource.password}")
+    String password;
+
+
     @Override
     public List<String> getAllEmployees() throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
-        String driver = "com.mysql.jdbc.Driver";
         Class.forName(driver).newInstance();
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/employee_directory",
-                "root","root");
+        Connection con = DriverManager.getConnection(url,
+                username,password);
         PreparedStatement ps = con.prepareStatement("select first_name from employee");
         ResultSet result = ps.executeQuery();
         List<String> firstName= new ArrayList<>();
