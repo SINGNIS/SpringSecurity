@@ -16,9 +16,11 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-security'
+    /*implementation 'org.springframework.boot:spring-boot-starter-security'*/
     implementation 'org.springframework.boot:spring-boot-starter-web'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'org.springframework:spring-jdbc:6.1.4'
+    implementation 'mysql:mysql-connector-java:5.1.6'
 }
 
 tasks.named('test') {
