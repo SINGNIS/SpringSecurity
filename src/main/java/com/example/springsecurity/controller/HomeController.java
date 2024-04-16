@@ -19,7 +19,7 @@ class HomeController {
     @Autowired
     EmployeeService emp;
 
-    @GetMapping
+    @GetMapping("/hello")
     public String getHome() {
         return "hello";
     }
